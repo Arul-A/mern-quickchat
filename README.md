@@ -1,4 +1,7 @@
 Real-time chat application built using the MERN stack (MongoDB, Express.js, React, Node.js) and Socket.IO. Supports one-on-one messaging with instant delivery and persistent chat history.
 
 #Packages used in this project - Backend
-*bcryptjs, cloudinary, cors, dotenv, express, jsonwebtoken, mongoose, socket.io
+*bcryptjs, cloudinary, cors, dotenv, express, jsonwebtoken, mongoose, socket.io, nodemon
+
+
+
