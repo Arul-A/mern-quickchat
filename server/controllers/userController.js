@@ -10,13 +10,13 @@ export const signup = async (req, res) => {
     try {
 
         if( !fullName || !email || !password ) {
-            return res.json({ success: "false", message: "Missing Details" });
+            return res.json({ success: false, message: "Missing Details" });
         }
 
         const user = await User.findOne({ email });
 
         if(user) {
-            return res.json({ success: "false", message: "User already exists" });
+            return res.json({ success: false, message: "User already exists" });
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
         const token = generateAuthToken(newUser._id);
 
         res.json({
-            success: "true",
+            success: true,
             userData: newUser,
             token,
             message: "User created successfully",
@@ -41,7 +41,7 @@ export const signup = async (req, res) => {
     } catch (error) {
         console.error("Error in signup:", error.message);
         res.json({
-            success: "false",
+            success: false,
             message: error.message,
         });
     }
@@ -58,13 +58,13 @@ export const login = async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if(!isPasswordValid) {
-            return res.json({ success: "false", message: "Invalid credentials" });
+            return res.json({ success: false, message: "Invalid credentials" });
         }
 
         const token = generateAuthToken(user._id);
 
         res.json({
-            success: "true",
+            success: true,
             userData: user,
             token,
             message: "Login successful",
@@ -73,7 +73,7 @@ export const login = async (req, res) => {
     } catch (error) {
         console.error("Error in login:", error.message);
         res.json({
-            success: "false",
+            success: false,
             message: error.message,
         });
     }
@@ -83,7 +83,7 @@ export const login = async (req, res) => {
 // Controller to check if user is authenticated
 export const checkAuth = async (req, res) => {
     res.json({
-        success: "true",
+        success: true,
         user: req.user,
     });
 }
@@ -112,14 +112,14 @@ export const updateProfile = async (req, res) => {
        }  
        
        res.json({
-            success: "true",
+            success: true,
             userData: updatedUser,
             message: "Profile updated successfully",
         });
     } catch (error) {
         console.error("Error in updateProfile:", error.message);
         res.json({
-            success: "false",
+            success: false,
             message: error.message,
         });
     }
