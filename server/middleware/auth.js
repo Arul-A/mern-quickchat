@@ -3,7 +3,6 @@ import User from "../models/user.js";
 
 // middleware to protect routes
 export const protectRoute = async (req, res, next) => {
-    console.log("protectRoute middleware called", req);
     try {
         const token = req.headers.token;
         const decoded = jwt.verify(token, process.env.JWT_SECRET);

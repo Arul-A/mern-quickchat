@@ -17,7 +17,7 @@ export const getUsersForSidebar = async (req, res) => {
                 unseenMessages[user._id] = messages.length;
             }
         })
-        await promises.all(promises);
+        await Promise.all(promises);
         res.json({success: true, users: filterUsers, unseenMessages})
     } catch(error) {
         console.log(error.message)
@@ -26,7 +26,6 @@ export const getUsersForSidebar = async (req, res) => {
 }
 
 //Get all messages for selected user
-
 export const getMessages = async (req, res) => {
     try {
         const {id: selectedUserId } = req.params;
