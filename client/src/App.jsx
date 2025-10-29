@@ -4,11 +4,10 @@ import HomePage from './pages/HomePage'
 import LoginPage from './pages/LoginPage'
 import ProfilePage from './pages/ProfilePage'
 import { Toaster } from 'react-hot-toast'
-import { AuthContext } from '../context/AuthContext'
+import { AuthContext } from '../context/AuthContext.jsx'
 
 const App = () => {
   const { authUser } = useContext(AuthContext);
-  console.log("Auth User in App:", authUser);
   return (
     <div className="bg-[url('./src/assets/bgImage.svg')] bg-cover">
       <Toaster />
